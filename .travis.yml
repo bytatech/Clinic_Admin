@@ -30,5 +30,4 @@ deploy:
  api-key: 
   secure: $HEROKU_API_KEY
  app: receptionist-app
- on: Receptionist
-  branch:karthi
+ on: karthi
