@@ -25,8 +25,6 @@ import lombok.Data;
  *@version 1.0.0
  */
 @Data
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 //@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"tokenNumber" })})
@@ -34,7 +32,7 @@ import lombok.Data;
 public class Token {
 	
 	@Id @GeneratedValue
-    private Long id;
+    private int id;
 
 	 
 	@DateTimeFormat(pattern="dd-mm-yyyy")

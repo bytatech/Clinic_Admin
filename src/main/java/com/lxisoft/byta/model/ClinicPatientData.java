@@ -38,7 +38,7 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = {"name" })})

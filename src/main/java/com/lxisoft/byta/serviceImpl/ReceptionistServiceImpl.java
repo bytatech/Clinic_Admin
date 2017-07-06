@@ -78,8 +78,15 @@ public class ReceptionistServiceImpl implements ReceptionistService{
 	}
 
 
+	public Token findOne(int id) {
+		
+		return tokenRepo.findOne(id);
+	}
+
+
 	
 
+	
 
 	
 	

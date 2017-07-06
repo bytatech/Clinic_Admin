@@ -19,7 +19,7 @@ import lombok.Data;
  */
 @Data
 @Entity
-@JsonIgnoreProperties(ignoreUnknown =true)
+
 public class ClinicPatientPrivateData {
 	@Id @GeneratedValue
 	private long patientId;

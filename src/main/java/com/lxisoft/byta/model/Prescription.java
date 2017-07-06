@@ -27,7 +27,6 @@ import lombok.Data;
 
 @Entity
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
 @EntityListeners(AuditingEntityListener.class)
 public class Prescription {
 	

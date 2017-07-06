@@ -101,16 +101,22 @@ public class ReceptionistController {
 
 	@RequestMapping(value="/register", method = RequestMethod.POST)
 
-	public void savepatient(ClinicPatientData data)throws UserNameNotRepeatException {
-
+	public void savePatient(ClinicPatientData data)throws UserNameNotRepeatException {
+		logger.debug("------into savePatient()-----");
 	
 		service.save(data);
-
+		logger.debug("------saved-----");
 	}
 
 	@RequestMapping(value="/update", method = RequestMethod.PUT)
+	
+		
 	public ClinicPatientData updatePatient(ClinicPatientData data) {
 
+
+    	logger.debug("------get into updatePatient() -------");
+    	
+		
 		ClinicPatientData datas = service.findOne(data.getId());
 
 		datas.setId(data.getId());
@@ -137,11 +143,19 @@ public class ReceptionistController {
 		//datas.setPrivateData(prvteData);
 		//service.savePrivateData(prvteData);
 		service.save(datas);
+		logger.debug("------saved-----");
+		
+		logger.debug("return datas");
 		return datas;
 	}
 
 	@RequestMapping(value="/read/{id}", method = RequestMethod.GET)
 	public ClinicPatientData readPatient(@PathVariable Long id) {
+		
+
+    	logger.debug("------get into readPatient() -------");
+    	logger.debug("return findOne()");
+		
 		return service.findOne(id);
 	}
 
@@ -153,12 +167,22 @@ public class ReceptionistController {
 
 */	@RequestMapping(value="/searchbyname/{name}/{pageNumber}", method = RequestMethod.GET)
 	public Page<ClinicPatientData> serchByName(@PathVariable String name,@PathVariable  int pageNumber) {
-		return service.getPatientData(name, pageNumber);
+		
+
+	logger.debug("------get into searchByName() -------");
+	logger.debug("return getPatientData()");
+	
+	return service.getPatientData(name, pageNumber);
 	}
 
 	@RequestMapping(value="/searchbyphone/{phoneNo}", method = RequestMethod.POST)
 
 	public ClinicPatientData findByPhoneNo(@PathVariable Long phoneNo) {
+		
+
+    	logger.debug("------get into findByPhoneNo() -------");
+    	logger.debug("return findByPhoneNo()");
+		
 		return service.findByPhoneNo(phoneNo);
 
 	}
@@ -203,13 +227,30 @@ public class ReceptionistController {
 		 service.save(token);
 		 logger.debug("------savedToken-------");
 	 }
+    
+    
+    
 	 
 	 @RequestMapping(value="/doctor/read/{id}", method = RequestMethod.GET)
 	 public ClinicPatientData getPatientData(@PathVariable Long id){
 		 
+	    	logger.debug("------get into grtPatientData() -------");
+	    	logger.debug("return findOne()");
 		 return service.findOne(id); 
 		 
 	 }
+	 
+	 
+	 @RequestMapping(value="/doctor/getToken/{id}", method = RequestMethod.GET)
+	 public Token getTokenNumber(@PathVariable int id){
+		 logger.debug("------get into getTokenNumber() -------");
+	    	logger.debug("return findOne()");
+		 return service.findOne(id); 
+		 
+	 }
+	 
+	 
+	 
 	
 	
 }

@@ -57,7 +57,7 @@ public class ReceptionistApplication {
 		protected void configure(HttpSecurity http) throws Exception {
 
 			http.httpBasic().and().authorizeRequests().//
-					antMatchers(HttpMethod.POST,"/receptionist/register").hasAnyRole("RECEPTIONIST").//
+					antMatchers(HttpMethod.POST,"/receptionist/register").hasRole("RECEPTIONIST").//
 					antMatchers(HttpMethod.GET,"/patient/read").hasRole( "RECEPTIONIST").
 					antMatchers(HttpMethod.PUT,"/patient/update").hasRole( "RECEPTIONIST").
 					antMatchers(HttpMethod.GET,"/receptionist/generateToken").hasRole( "RECEPTIONIST").
@@ -67,6 +67,7 @@ public class ReceptionistApplication {
 					antMatchers(HttpMethod.PUT,"/privateData/update").hasRole( "RECEPTIONIST").
 					antMatchers(HttpMethod.DELETE,"/privateData/delete").hasRole( "RECEPTIONIST").
 					antMatchers(HttpMethod.GET,"/doctor/read").hasRole( "DOCTOR").
+					antMatchers(HttpMethod.GET,"/doctor/getToken").hasRole("DOCTOR").
 					antMatchers(HttpMethod.POST,"/receptionist/saveToken").hasAnyRole("DOCTOR").
 					and().//
 					csrf().disable();
