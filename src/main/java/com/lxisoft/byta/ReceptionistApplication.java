@@ -34,7 +34,7 @@ public class ReceptionistApplication {
 	}
 
 	public @PostConstruct void init() {
-		SecurityUtils.runAs("system", "system", "ROLE_RECEPTIONIST", "ROLE_PATIENT");
+		SecurityUtils.runAs("system", "system", "ROLE_RECEPTIONIST", "ROLE_PATIENT","ROLE_DOCTOR");
 		// patientRepository.save(new PatientData("lxi", 1234L));
 
 		SecurityContextHolder.clearContext();
@@ -49,7 +49,8 @@ public class ReceptionistApplication {
 
 			auth.inMemoryAuthentication().//
 					
-					withUser("arun").password("hello").roles( "RECEPTIONIST");
+					withUser("arun").password("hello").roles( "RECEPTIONIST").and().
+					withUser("karthi").password("123").roles("DOCTOR");
 		}
 
 		@Override
@@ -65,6 +66,8 @@ public class ReceptionistApplication {
 					antMatchers(HttpMethod.GET,"/privateData/read").hasRole( "RECEPTIONIST").
 					antMatchers(HttpMethod.PUT,"/privateData/update").hasRole( "RECEPTIONIST").
 					antMatchers(HttpMethod.DELETE,"/privateData/delete").hasRole( "RECEPTIONIST").
+					antMatchers(HttpMethod.GET,"/doctor/read").hasRole( "DOCTOR").
+					antMatchers(HttpMethod.POST,"/receptionist/saveToken").hasAnyRole("DOCTOR").
 					and().//
 					csrf().disable();
 		}

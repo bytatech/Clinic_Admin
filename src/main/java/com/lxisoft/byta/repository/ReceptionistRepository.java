@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;
 
 import com.lxisoft.byta.model.ClinicPatientData;
+import com.lxisoft.byta.model.Token;
 
 /**
  * this is an interface to create a repository which extends {@link JpaRepository}
@@ -41,5 +42,7 @@ public interface ReceptionistRepository extends JpaRepository<ClinicPatientData,
 	
 	@PreAuthorize("hasRole('ROLE_RECEPTIONIST')")
 	public String findByName(String name);
+
+
 
 }

@@ -8,7 +8,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.lxisoft.byta.model.ClinicPatientData;
+import com.lxisoft.byta.model.Token;
 import com.lxisoft.byta.repository.ReceptionistRepository;
+import com.lxisoft.byta.repository.TokenRepository;
 import com.lxisoft.byta.service.ReceptionistService;
 
 
@@ -28,6 +30,9 @@ public class ReceptionistServiceImpl implements ReceptionistService{
 	
 	@Autowired
 	private ReceptionistRepository patientRepo;
+	
+	@Autowired
+	private TokenRepository tokenRepo;
 	
 	
 	
@@ -64,6 +69,12 @@ public class ReceptionistServiceImpl implements ReceptionistService{
 	public String findOne(String name) {
 	
 		return patientRepo.findByName(name);
+	}
+
+
+	public void save(Token token) {
+		tokenRepo.save(token);
+		
 	}
 
 

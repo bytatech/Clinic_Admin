@@ -11,6 +11,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -42,9 +43,13 @@ import com.lxisoft.byta.serviceImpl.ReceptionistServiceImpl;
 @RestController
 @RequestMapping("/receptionist")
 public class ReceptionistController {
+	
+	 int number=0;
 
 	@Autowired
 	ReceptionistServiceImpl service;
+	
+	Logger logger = Logger.getLogger(ReceptionistController.class);
 
 	/*@RequestMapping(value = "/qrReader", method = RequestMethod.POST, consumes = "multipart/form-data")
 	public Patient getUser(MultipartFile file) throws JAXBException, IOException, UserNameNotRepeatException {
@@ -172,15 +177,38 @@ public class ReceptionistController {
 	
 
 	 @RequestMapping("/generateToken/{name}")
-     public  String generateToken(@PathVariable String name ) {
-		 
-		 Token token = new Token(name);
-		
-	
-		return token.toString();
+     public  Token generateToken(@PathVariable String name ) {
 		 
 		 
+		 
+		 
+		 number++;
+		 logger.debug("------entered into -------");
+		 logger.debug("-----number =  -------"+number);
+		 Token token = new Token(name,number);
+		 
+		 logger.debug("------generated Token-------");
+		 	saveToken(token);
+		 	
+		return token; 
 	 
+	 }
+	 
+	 
+
+    public  void saveToken(Token token ) {
+		 
+		 
+    	logger.debug("------reached saveToken()-------");
+		 service.save(token);
+		 logger.debug("------savedToken-------");
+	 }
+	 
+	 @RequestMapping(value="/doctor/read/{id}", method = RequestMethod.GET)
+	 public ClinicPatientData getPatientData(@PathVariable Long id){
+		 
+		 return service.findOne(id); 
+		 
 	 }
 	
 	
