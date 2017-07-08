@@ -25,9 +25,9 @@ import com.lxisoft.byta.security.SecurityUtils;
 @EnableJpaAuditing
 @SpringBootApplication
 public class ReceptionistApplication {
-	@Autowired
+/*	@Autowired
 	private ReceptionistRepository patientRepository;
-
+*/
 	public static void main(String[] args) {
 		SpringApplication.run(ReceptionistApplication.class, args);
 
@@ -68,6 +68,7 @@ public class ReceptionistApplication {
 					antMatchers(HttpMethod.DELETE,"/privateData/delete").hasRole( "RECEPTIONIST").
 					antMatchers(HttpMethod.GET,"/doctor/read").hasRole( "DOCTOR").
 					antMatchers(HttpMethod.GET,"/doctor/getToken").hasRole("DOCTOR").
+					antMatchers(HttpMethod.PUT,"doctor/savePrescription").hasRole("DOCTOR").
 					antMatchers(HttpMethod.POST,"/receptionist/saveToken").hasAnyRole("DOCTOR").
 					and().//
 					csrf().disable();

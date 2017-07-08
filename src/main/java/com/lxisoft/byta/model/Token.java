@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.lxisoft.byta.serviceImpl.ReceptionistServiceImpl;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 /**
  * Token class defines a token
  * @author Karthi
@@ -27,6 +28,7 @@ import lombok.Data;
 @Data
 @EntityListeners(AuditingEntityListener.class)
 @Entity
+@NoArgsConstructor
 //@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"tokenNumber" })})
 
 public class Token {
@@ -59,9 +61,9 @@ public class Token {
 	
 	
 	
-	public String toString(){
+	/*public String toString(){
 		return "date="+getDate()+"time="+getTime()+"token="+tokenNumber+"username="+getUsername();
 		
 	}
-	
+	*/
 }

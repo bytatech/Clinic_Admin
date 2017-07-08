@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;
 
 import com.lxisoft.byta.model.ClinicPatientData;
+import com.lxisoft.byta.model.Prescription;
 import com.lxisoft.byta.model.Token;
 
 /**
@@ -23,7 +24,7 @@ import com.lxisoft.byta.model.Token;
 @Repository
 public interface ReceptionistRepository extends JpaRepository<ClinicPatientData, Long> {
 
-	@PreAuthorize("hasAnyRole('PATIENT','RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('PATIENT','RECEPTIONIST','DOCTOR')")
 	<S extends ClinicPatientData> S save(S s);
 
 	@PreAuthorize("hasRole('ROLE_RECEPTIONIST')")
@@ -42,6 +43,8 @@ public interface ReceptionistRepository extends JpaRepository<ClinicPatientData,
 	
 	@PreAuthorize("hasRole('ROLE_RECEPTIONIST')")
 	public String findByName(String name);
+
+	
 
 
 

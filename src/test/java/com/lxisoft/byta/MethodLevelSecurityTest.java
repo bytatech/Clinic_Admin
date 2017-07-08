@@ -1,4 +1,4 @@
-package com.lxisoft.byta;
+/*package com.lxisoft.byta;
 
 import static org.junit.Assert.*;
 
@@ -73,3 +73,4 @@ private ReceptionistRepository receptionistRepository;
 
 
 }
+*/

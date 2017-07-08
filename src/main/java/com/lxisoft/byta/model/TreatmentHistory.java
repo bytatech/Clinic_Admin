@@ -1,5 +1,7 @@
 package com.lxisoft.byta.model;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -13,24 +15,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
-/**
- * Drug details related to prescription.
- * 
- * @author Maya
- * @version 1.0.0
- */
-
-@Entity
 @Data
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EntityListeners(AuditingEntityListener.class)
-public class Drug {
-
+@Entity
+public class TreatmentHistory {
 	@Id
 	@GeneratedValue
-	private long id;
+	private long patientTreatmentId;
 
-	private String drugName;
-	private int dose;
-	private String dosageInstruction;
 }

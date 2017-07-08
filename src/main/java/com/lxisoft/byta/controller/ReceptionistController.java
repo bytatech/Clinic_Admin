@@ -24,6 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.lxisoft.byta.exceptions.UserNameNotRepeatException;
 import com.lxisoft.byta.model.ClinicPatientData;
+import com.lxisoft.byta.model.ClinicPatientPrivateData;
+import com.lxisoft.byta.model.Patient;
+import com.lxisoft.byta.model.Prescription;
 import com.lxisoft.byta.model.Token;
 import com.lxisoft.byta.serviceImpl.ReceptionistServiceImpl;
 
@@ -51,7 +54,7 @@ public class ReceptionistController {
 	
 	Logger logger = Logger.getLogger(ReceptionistController.class);
 
-	/*@RequestMapping(value = "/qrReader", method = RequestMethod.POST, consumes = "multipart/form-data")
+	@RequestMapping(value = "/qrReader", method = RequestMethod.POST, consumes = "multipart/form-data")
 	public Patient getUser(MultipartFile file) throws JAXBException, IOException, UserNameNotRepeatException {
 
 		// conveting xml multipart to io file
@@ -70,9 +73,9 @@ public class ReceptionistController {
 
 		Patient patient = (Patient) jaxbUnmarshaller.unmarshal(convFile);
 
-		PatientPrivateData privateData = new PatientPrivateData();
+		ClinicPatientPrivateData privateData = new ClinicPatientPrivateData();
 
-		PatientData data = new PatientData();
+		ClinicPatientData data = new ClinicPatientData();
 
 		data.setName(patient.getName());
 
@@ -92,7 +95,7 @@ public class ReceptionistController {
 
 	}
 
-*/	// patient data CRUD request mapping
+	// patient data CRUD request mapping
 	
 	@RequestMapping("/1")
 	public String print(){
@@ -108,47 +111,7 @@ public class ReceptionistController {
 		logger.debug("------saved-----");
 	}
 
-	@RequestMapping(value="/update", method = RequestMethod.PUT)
 	
-		
-	public ClinicPatientData updatePatient(ClinicPatientData data) {
-
-
-    	logger.debug("------get into updatePatient() -------");
-    	
-		
-		ClinicPatientData datas = service.findOne(data.getId());
-
-		datas.setId(data.getId());
-		datas.setName(data.getName());
-		datas.setPhoneNo(data.getPhoneNo());
-		datas.setFamilyPhysician(data.getFamilyPhysician());
-		datas.setBiometricId(data.getBiometricId());
-		datas.setGender(data.getGender());
-		datas.setRecordNo(data.getRecordNo());
-		datas.setDate(data.getDate());
-		
-		
-		
-	
-	datas.getPrivateData().setAddress(data.getPrivateData().getAddress());
-	datas.getPrivateData().setAge(data.getPrivateData().getAge());
-	datas.getPrivateData().setCity(data.getPrivateData().getCity());
-	datas.getPrivateData().setCountry(data.getPrivateData().getCountry());
-	datas.getPrivateData().setEmail(data.getPrivateData().getEmail());
-	datas.getPrivateData().setProfession(data.getPrivateData().getProfession());
-	datas.getPrivateData().setSocialMediaId(data.getPrivateData().getSocialMediaId());
-	datas.getPrivateData().setZip(data.getPrivateData().getZip());
-		
-		//datas.setPrivateData(prvteData);
-		//service.savePrivateData(prvteData);
-		service.save(datas);
-		logger.debug("------saved-----");
-		
-		logger.debug("return datas");
-		return datas;
-	}
-
 	@RequestMapping(value="/read/{id}", method = RequestMethod.GET)
 	public ClinicPatientData readPatient(@PathVariable Long id) {
 		
@@ -159,13 +122,9 @@ public class ReceptionistController {
 		return service.findOne(id);
 	}
 
-	/*@RequestMapping(value="/delete{id}", method = RequestMethod.DELETE)
-	public void deletePatient(@PathVariable Long id) {
-		service.delete(id);
+	
 
-	}
-
-*/	@RequestMapping(value="/searchbyname/{name}/{pageNumber}", method = RequestMethod.GET)
+	@RequestMapping(value="/searchbyname/{name}/{pageNumber}", method = RequestMethod.GET)
 	public Page<ClinicPatientData> serchByName(@PathVariable String name,@PathVariable  int pageNumber) {
 		
 
@@ -202,19 +161,19 @@ public class ReceptionistController {
 
 	 @RequestMapping("/generateToken/{name}")
      public  Token generateToken(@PathVariable String name ) {
-		 
-		 
-		 
-		 
+		
 		 number++;
 		 logger.debug("------entered into -------");
+		 
 		 logger.debug("-----number =  -------"+number);
+		 
 		 Token token = new Token(name,number);
 		 
 		 logger.debug("------generated Token-------");
+		 
 		 	saveToken(token);
 		 	
-		return token; 
+		 	return token; 
 	 
 	 }
 	 
@@ -224,7 +183,9 @@ public class ReceptionistController {
 		 
 		 
     	logger.debug("------reached saveToken()-------");
+    	
 		 service.save(token);
+		 
 		 logger.debug("------savedToken-------");
 	 }
     
@@ -236,6 +197,7 @@ public class ReceptionistController {
 		 
 	    	logger.debug("------get into grtPatientData() -------");
 	    	logger.debug("return findOne()");
+	    	
 		 return service.findOne(id); 
 		 
 	 }
@@ -243,12 +205,42 @@ public class ReceptionistController {
 	 
 	 @RequestMapping(value="/doctor/getToken/{id}", method = RequestMethod.GET)
 	 public Token getTokenNumber(@PathVariable int id){
+		 
 		 logger.debug("------get into getTokenNumber() -------");
+		 
 	    	logger.debug("return findOne()");
+	    	
 		 return service.findOne(id); 
 		 
 	 }
 	 
+	 
+	 @RequestMapping(value="/doctor/savePrescription/{id}", method = RequestMethod.POST)
+	 public void savePrescription(Long id){
+		 logger.debug("-----------get into savePrescription()---------");
+	
+		 
+		 ClinicPatientData data = service.findOne(id);
+		 List<Prescription> prescriptions = null;
+
+			logger.debug("***********: findone(data) " + data);
+			data.setPrescriptionList(prescriptions);
+
+			logger.debug("********* setting prescription to clinic db  " + data);
+			 service.save(data);
+		 
+		 
+	 }
+	 
+	 
+	 
+	 @RequestMapping(value = "/readPrescription/{id}", method = RequestMethod.GET)
+		public List<Prescription> getPatienPrescriptiont(@PathVariable Long id) {
+		 
+			logger.debug(" ********get into getPatienPrescriptiont: *********" + service.findOne(id).getPrescriptionList());
+		
+			return service.findOne(id).getPrescriptionList();
+		}
 	 
 	 
 	

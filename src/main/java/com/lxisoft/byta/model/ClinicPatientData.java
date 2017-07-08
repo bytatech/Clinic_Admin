@@ -80,15 +80,17 @@ public class ClinicPatientData {
 	
 
 	 
-	public ClinicPatientData(){
-	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Prescription> prescriptionList;
+
+	public ClinicPatientData() {
+
 	}
-	
-	public ClinicPatientData(String name,Long phoneNo){
-		this.name=name;
-		this.phoneNo=phoneNo;
-		
-		
+
+	public ClinicPatientData(String name, Long phoneNo) {
+		this.name = name;
+		this.phoneNo = phoneNo;
+
 	}
 
 }

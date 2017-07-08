@@ -20,25 +20,24 @@ import lombok.Data;
 
 /**
  * Prescription deatils of patient are stored here.
+ * 
  * @author Maya
- *@version 1.0.0
+ * @version 1.0.0
  */
-
 
 @Entity
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 @EntityListeners(AuditingEntityListener.class)
 public class Prescription {
-	
-	
-	@Id @GeneratedValue
-	private long patientPrescriptionId;
-	
-	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval =true)
+
+	@Id
+	@GeneratedValue
+	private long id;
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Drug> drugList;
-	
-	
+
 	private String doctorName;
-	
+
 }

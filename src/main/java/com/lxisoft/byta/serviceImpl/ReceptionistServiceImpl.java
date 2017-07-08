@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.lxisoft.byta.model.ClinicPatientData;
+import com.lxisoft.byta.model.Prescription;
 import com.lxisoft.byta.model.Token;
 import com.lxisoft.byta.repository.ReceptionistRepository;
 import com.lxisoft.byta.repository.TokenRepository;
@@ -83,6 +84,8 @@ public class ReceptionistServiceImpl implements ReceptionistService{
 		return tokenRepo.findOne(id);
 	}
 
+
+	
 
 	
 
