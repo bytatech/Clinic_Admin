@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="trace" strict="true" schema="Log4J-V2.0.xsd">
+	 <Appenders>
+		<JDBC name="databaseAppender" tableName="receptionistdb.LOGS">
+			<ConnectionFactory class="com.lxisoft.byta.LogAspect.DBConnector"
+				method="getDatabaseConnection" />
+			<Column name="DATED" isEventTimestamp="true" />
+			<Column name="LEVEL" pattern="%level" />
+			<Column name="LOGGER" pattern="%logger" />
+			<Column name="MESSAGE" pattern="%message" />
+		</JDBC>
+
+		
+
+	</Appenders>
+	<Loggers>
+
+		<Root level="info">
+			<AppenderRef ref="databaseAppender" />
+		
+		</Root>
+	</Loggers> 
+	
+	<!-- <Appenders>
+		<JDBC name="FILE" class="com.lxisoft.byta.LogAspect.DBConnector"
+			 method="getDatabaseConnection" >
+			<Column name="DATED" isEventTimestamp="true" />
+			<Column name="LEVEL" pattern="%level" />
+			<Column name="LOGGER" pattern="%logger" />
+			<Column name="MESSAGE" pattern="%message" />
+   			
+   <layout class="com.lxisoft.byta.LogAspect.DBConnector">
+      <param name="conversionPattern" value="%m%n"/>
+   </layout>
+   </appender>
+</Appenders>	
+	
+	<Loggers>
+
+		<Root level="info">
+			<AppenderRef ref="FILE" />
+		
+		</Root>
+	</Loggers>
+	 -->
+		
+</Configuration>                                                                                                                                                             

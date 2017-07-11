@@ -52,7 +52,7 @@ public class ReceptionistController {
 	@Autowired
 	ReceptionistServiceImpl service;
 	
-	Logger logger = Logger.getLogger(ReceptionistController.class);
+	
 
 	@RequestMapping(value = "/qrReader", method = RequestMethod.POST, consumes = "multipart/form-data")
 	public Patient getUser(MultipartFile file) throws JAXBException, IOException, UserNameNotRepeatException {
@@ -105,10 +105,10 @@ public class ReceptionistController {
 	@RequestMapping(value="/register", method = RequestMethod.POST)
 
 	public void savePatient(ClinicPatientData data)throws UserNameNotRepeatException {
-		logger.debug("------into savePatient()-----");
+		
 	
 		service.save(data);
-		logger.debug("------saved-----");
+		
 	}
 
 	
@@ -116,8 +116,7 @@ public class ReceptionistController {
 	public ClinicPatientData readPatient(@PathVariable Long id) {
 		
 
-    	logger.debug("------get into readPatient() -------");
-    	logger.debug("return findOne()");
+    	
 		
 		return service.findOne(id);
 	}
@@ -128,8 +127,7 @@ public class ReceptionistController {
 	public Page<ClinicPatientData> serchByName(@PathVariable String name,@PathVariable  int pageNumber) {
 		
 
-	logger.debug("------get into searchByName() -------");
-	logger.debug("return getPatientData()");
+	
 	
 	return service.getPatientData(name, pageNumber);
 	}
@@ -139,9 +137,7 @@ public class ReceptionistController {
 	public ClinicPatientData findByPhoneNo(@PathVariable Long phoneNo) {
 		
 
-    	logger.debug("------get into findByPhoneNo() -------");
-    	logger.debug("return findByPhoneNo()");
-		
+    	
 		return service.findByPhoneNo(phoneNo);
 
 	}
@@ -163,13 +159,10 @@ public class ReceptionistController {
      public  Token generateToken(@PathVariable String name ) {
 		
 		 number++;
-		 logger.debug("------entered into -------");
-		 
-		 logger.debug("-----number =  -------"+number);
 		 
 		 Token token = new Token(name,number);
 		 
-		 logger.debug("------generated Token-------");
+		 
 		 
 		 	saveToken(token);
 		 	
@@ -182,11 +175,11 @@ public class ReceptionistController {
     public  void saveToken(Token token ) {
 		 
 		 
-    	logger.debug("------reached saveToken()-------");
+    	
     	
 		 service.save(token);
 		 
-		 logger.debug("------savedToken-------");
+		
 	 }
     
     
@@ -195,8 +188,7 @@ public class ReceptionistController {
 	 @RequestMapping(value="/doctor/read/{id}", method = RequestMethod.GET)
 	 public ClinicPatientData getPatientData(@PathVariable Long id){
 		 
-	    	logger.debug("------get into grtPatientData() -------");
-	    	logger.debug("return findOne()");
+	    	
 	    	
 		 return service.findOne(id); 
 		 
@@ -206,9 +198,7 @@ public class ReceptionistController {
 	 @RequestMapping(value="/doctor/getToken/{id}", method = RequestMethod.GET)
 	 public Token getTokenNumber(@PathVariable int id){
 		 
-		 logger.debug("------get into getTokenNumber() -------");
 		 
-	    	logger.debug("return findOne()");
 	    	
 		 return service.findOne(id); 
 		 
@@ -217,16 +207,16 @@ public class ReceptionistController {
 	 
 	 @RequestMapping(value="/doctor/savePrescription/{id}", method = RequestMethod.POST)
 	 public void savePrescription(Long id){
-		 logger.debug("-----------get into savePrescription()---------");
+		 
 	
 		 
 		 ClinicPatientData data = service.findOne(id);
 		 List<Prescription> prescriptions = null;
 
-			logger.debug("***********: findone(data) " + data);
+			
 			data.setPrescriptionList(prescriptions);
 
-			logger.debug("********* setting prescription to clinic db  " + data);
+			
 			 service.save(data);
 		 
 		 
@@ -237,7 +227,7 @@ public class ReceptionistController {
 	 @RequestMapping(value = "/readPrescription/{id}", method = RequestMethod.GET)
 		public List<Prescription> getPatienPrescriptiont(@PathVariable Long id) {
 		 
-			logger.debug(" ********get into getPatienPrescriptiont: *********" + service.findOne(id).getPrescriptionList());
+			
 		
 			return service.findOne(id).getPrescriptionList();
 		}
