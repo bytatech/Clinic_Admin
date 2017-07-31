@@ -162,8 +162,13 @@ public class ReceptionistController {
 		 
 		 Token token = new Token(name,number);
 		 
+<<<<<<< HEAD
 		 /*ObjectMapper mapper=new ObjectMapper();
 		 Token t=mapper.readValue(new URL("http://localhost:8080/setuser?username="+username+"&"+"adress="+adress), User.class);*/
+=======
+		 
+		 
+>>>>>>> d68e7230260389185675daf50cf18a58f4714950
 		 	saveToken(token);
 		 	
 		 	return token; 

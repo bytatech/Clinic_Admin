@@ -1,0 +1,12 @@
+Merits
+
+---> if we have a clear cut of database structure, no need to worry about normalization and relationships 
+---> we get working application as the result
+---> no need to worry about clientSide
+---> validation in input fields 
+
+
+Demerits
+
+---> @Data is not mentioned in pojo
+---> 
