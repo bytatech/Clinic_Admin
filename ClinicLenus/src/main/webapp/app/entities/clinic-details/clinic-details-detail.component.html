@@ -1,0 +1,98 @@
+
+<div *ngIf="clinicDetails">
+    <h2><span jhiTranslate="clinicLenusApp.clinicDetails.detail.title">Clinic Details</span> {{clinicDetails.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.name">Name</span></dt>
+        <dd>
+            <span>{{clinicDetails.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.address">Address</span></dt>
+        <dd>
+            <span>{{clinicDetails.address}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.pincode">Pincode</span></dt>
+        <dd>
+            <span>{{clinicDetails.pincode}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.country">Country</span></dt>
+        <dd>
+            <span>{{clinicDetails.country}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.mobile">Mobile</span></dt>
+        <dd>
+            <span>{{clinicDetails.mobile}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.clinicTiming">Clinic Timing</span></dt>
+        <dd>
+            <span>{{clinicDetails.clinicTiming | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.category">Category</span></dt>
+        <dd>
+            <span>{{clinicDetails.category}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.landmarks">Landmarks</span></dt>
+        <dd>
+            <span>{{clinicDetails.landmarks}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.website">Website</span></dt>
+        <dd>
+            <span>{{clinicDetails.website}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.clinicDescription">Clinic Description</span></dt>
+        <dd>
+            <span>{{clinicDetails.clinicDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.clinicImages">Clinic Images</span></dt>
+        <dd>
+            <div *ngIf="clinicDetails.clinicImages">
+                <a (click)="openFile(clinicDetails.clinicImagesContentType, clinicDetails.clinicImages)">
+                    <img [src]="'data:' + clinicDetails.clinicImagesContentType + ';base64,' + clinicDetails.clinicImages" style="max-width: 100%;" alt="clinicDetails image"/>
+                </a>
+                {{clinicDetails.clinicImagesContentType}}, {{byteSize(clinicDetails.clinicImages)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.location">Location</span></dt>
+        <dd>
+            <span>{{clinicDetails.location}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.clinicOwnerInfo">Clinic Owner Info</span></dt>
+        <dd>
+            <div *ngIf="clinicDetails.clinicOwnerInfo">
+                <a [routerLink]="['/clinic-owner-info', clinicDetails.clinicOwnerInfo?.id]">{{clinicDetails.clinicOwnerInfo?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.governtment">Governtment</span></dt>
+        <dd>
+            <div *ngIf="clinicDetails.governtment">
+                <a [routerLink]="['/governtment', clinicDetails.governtment?.id]">{{clinicDetails.governtment?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.nonGoverntment">Non Governtment</span></dt>
+        <dd>
+            <div *ngIf="clinicDetails.nonGoverntment">
+                <a [routerLink]="['/non-governtment', clinicDetails.nonGoverntment?.id]">{{clinicDetails.nonGoverntment?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicDetails.medicineSystem">Medicine System</span></dt>
+        <dd>
+            <div *ngIf="clinicDetails.medicineSystem">
+                <a [routerLink]="['/medicine-system', clinicDetails.medicineSystem?.id]">{{clinicDetails.medicineSystem?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'clinic-details/'+ clinicDetails.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

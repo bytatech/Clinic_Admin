@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Prescription.
+    -->
+    <changeSet id="20170724071730-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="clinic_patient_data_id"
+                                 baseTableName="prescription"
+                                 constraintName="fk_prescription_clinic_patient_data_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="clinic_patient_data"/>
+
+        <addForeignKeyConstraint baseColumnNames="prescriptions_id"
+                                 baseTableName="prescription_drugs"
+                                 constraintName="fk_prescription_drugs_prescriptions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="prescription"/>
+        <addForeignKeyConstraint baseColumnNames="drugs_id"
+                                 baseTableName="prescription_drugs"
+                                 constraintName="fk_prescription_drugs_drugs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="drugs"/>
+        
+    </changeSet>
+</databaseChangeLog>

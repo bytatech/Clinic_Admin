@@ -1,0 +1,21 @@
+{
+    "clinicLenusApp": {
+        "nonGoverntment" : {
+            "home": {
+                "title": "Non Governtments",
+                "createLabel": "Create a new Non Governtment",
+                "createOrEditLabel": "Create or edit a Non Governtment"
+            },
+            "created": "A new Non Governtment is created with identifier {{ param }}",
+            "updated": "A Non Governtment is updated with identifier {{ param }}",
+            "deleted": "A Non Governtment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Non Governtment {{ id }}?"
+            },
+            "detail": {
+                "title": "Non Governtment"
+            },
+            "name": "Name"
+        }
+    }
+}

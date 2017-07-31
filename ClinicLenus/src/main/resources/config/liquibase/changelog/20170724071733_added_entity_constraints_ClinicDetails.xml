@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity ClinicDetails.
+    -->
+    <changeSet id="20170724071733-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="clinic_owner_info_id"
+                                 baseTableName="clinic_details"
+                                 constraintName="fk_clinic_details_clinic_owner_info_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="clinic_owner_info"/>
+
+        <addForeignKeyConstraint baseColumnNames="governtment_id"
+                                 baseTableName="clinic_details"
+                                 constraintName="fk_clinic_details_governtment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="governtment"/>
+
+        <addForeignKeyConstraint baseColumnNames="non_governtment_id"
+                                 baseTableName="clinic_details"
+                                 constraintName="fk_clinic_details_non_governtment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="non_governtment"/>
+
+        <addForeignKeyConstraint baseColumnNames="medicine_system_id"
+                                 baseTableName="clinic_details"
+                                 constraintName="fk_clinic_details_medicine_system_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="medicine_system"/>
+
+    </changeSet>
+</databaseChangeLog>

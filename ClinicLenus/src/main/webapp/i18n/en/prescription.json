@@ -1,0 +1,24 @@
+{
+    "clinicLenusApp": {
+        "prescription" : {
+            "home": {
+                "title": "Prescriptions",
+                "createLabel": "Create a new Prescription",
+                "createOrEditLabel": "Create or edit a Prescription"
+            },
+            "created": "A new Prescription is created with identifier {{ param }}",
+            "updated": "A Prescription is updated with identifier {{ param }}",
+            "deleted": "A Prescription is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Prescription {{ id }}?"
+            },
+            "detail": {
+                "title": "Prescription"
+            },
+            "date": "Date",
+            "doctorName": "Doctor Name",
+            "clinicPatientData": "Clinic Patient Data",
+            "drugs": "Drugs"
+        }
+    }
+}

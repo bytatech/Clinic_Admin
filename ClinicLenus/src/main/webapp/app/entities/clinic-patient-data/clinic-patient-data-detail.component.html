@@ -1,0 +1,53 @@
+
+<div *ngIf="clinicPatientData">
+    <h2><span jhiTranslate="clinicLenusApp.clinicPatientData.detail.title">Clinic Patient Data</span> {{clinicPatientData.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="clinicLenusApp.clinicPatientData.date">Date</span></dt>
+        <dd>
+            <span>{{clinicPatientData.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicPatientData.name">Name</span></dt>
+        <dd>
+            <span>{{clinicPatientData.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicPatientData.gender">Gender</span></dt>
+        <dd>
+            <span>{{clinicPatientData.gender}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicPatientData.age">Age</span></dt>
+        <dd>
+            <span>{{clinicPatientData.age}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicPatientData.phoneNo">Phone No</span></dt>
+        <dd>
+            <span>{{clinicPatientData.phoneNo}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicPatientData.clinic">Clinic</span></dt>
+        <dd>
+            <div *ngIf="clinicPatientData.clinic">
+                <a [routerLink]="['/clinic', clinicPatientData.clinic?.id]">{{clinicPatientData.clinic?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicPatientData.clinicPrivateData">Clinic Private Data</span></dt>
+        <dd>
+            <div *ngIf="clinicPatientData.clinicPrivateData">
+                <a [routerLink]="['/clinic-patient-private-data', clinicPatientData.clinicPrivateData?.id]">{{clinicPatientData.clinicPrivateData?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'clinic-patient-data/'+ clinicPatientData.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

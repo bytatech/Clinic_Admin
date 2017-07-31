@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "clinic",
+            "otherEntityName": "clinic",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "clinicPrivateData",
+            "otherEntityName": "clinicPatientPrivateData",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "clinicPatientData"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "prescription",
+            "otherEntityName": "prescription",
+            "otherEntityRelationshipName": "clinicPatientData"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "age",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "phoneNo",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170724071729",
+    "entityTableName": "clinic_patient_data",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

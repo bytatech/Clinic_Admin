@@ -1,0 +1,28 @@
+{
+    "clinicLenusApp": {
+        "clinicPatientData" : {
+            "home": {
+                "title": "Clinic Patient Data",
+                "createLabel": "Create a new Clinic Patient Data",
+                "createOrEditLabel": "Create or edit a Clinic Patient Data"
+            },
+            "created": "A new Clinic Patient Data is created with identifier {{ param }}",
+            "updated": "A Clinic Patient Data is updated with identifier {{ param }}",
+            "deleted": "A Clinic Patient Data is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Clinic Patient Data {{ id }}?"
+            },
+            "detail": {
+                "title": "Clinic Patient Data"
+            },
+            "date": "Date",
+            "name": "Name",
+            "gender": "Gender",
+            "age": "Age",
+            "phoneNo": "Phone No",
+            "clinic": "Clinic",
+            "clinicPrivateData": "Clinic Private Data",
+            "prescription": "Prescription"
+        }
+    }
+}

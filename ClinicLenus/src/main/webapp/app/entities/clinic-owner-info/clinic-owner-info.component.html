@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span jhiTranslate="clinicLenusApp.clinicOwnerInfo.home.title">Clinic Owner Infos</span>
+        <button class="btn btn-primary float-right create-clinic-owner-info" [routerLink]="['/', { outlets: { popup: ['clinic-owner-info-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="clinicLenusApp.clinicOwnerInfo.home.createLabel">
+            Create new Clinic Owner Info
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="clinicOwnerInfos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.name">Name</span></th>
+            <th><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.designation">Designation</span></th>
+            <th><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.mobile">Mobile</span></th>
+            <th><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.email">Email</span></th>
+            <th><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.address">Address</span></th>
+            <th><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.registrationNo">Registration No</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let clinicOwnerInfo of clinicOwnerInfos ;trackBy: trackId">
+                <td><a [routerLink]="['../clinic-owner-info', clinicOwnerInfo.id ]">{{clinicOwnerInfo.id}}</a></td>
+                <td>{{clinicOwnerInfo.name}}</td>
+                <td>{{clinicOwnerInfo.designation}}</td>
+                <td>{{clinicOwnerInfo.mobile}}</td>
+                <td>{{clinicOwnerInfo.email}}</td>
+                <td>{{clinicOwnerInfo.address}}</td>
+                <td>{{clinicOwnerInfo.registrationNo}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../clinic-owner-info', clinicOwnerInfo.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'clinic-owner-info/'+ clinicOwnerInfo.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'clinic-owner-info/'+ clinicOwnerInfo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

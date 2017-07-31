@@ -1,0 +1,36 @@
+{
+    "clinicLenusApp": {
+        "clinicDetails" : {
+            "home": {
+                "title": "Clinic Details",
+                "createLabel": "Create a new Clinic Details",
+                "createOrEditLabel": "Create or edit a Clinic Details"
+            },
+            "created": "A new Clinic Details is created with identifier {{ param }}",
+            "updated": "A Clinic Details is updated with identifier {{ param }}",
+            "deleted": "A Clinic Details is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Clinic Details {{ id }}?"
+            },
+            "detail": {
+                "title": "Clinic Details"
+            },
+            "name": "Name",
+            "address": "Address",
+            "pincode": "Pincode",
+            "country": "Country",
+            "mobile": "Mobile",
+            "clinicTiming": "Clinic Timing",
+            "category": "Category",
+            "landmarks": "Landmarks",
+            "website": "Website",
+            "clinicDescription": "Clinic Description",
+            "clinicImages": "Clinic Images",
+            "location": "Location",
+            "clinicOwnerInfo": "Clinic Owner Info",
+            "governtment": "Governtment",
+            "nonGoverntment": "Non Governtment",
+            "medicineSystem": "Medicine System"
+        }
+    }
+}

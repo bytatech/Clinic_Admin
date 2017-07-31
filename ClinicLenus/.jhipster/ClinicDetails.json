@@ -1,0 +1,93 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "clinicOwnerInfo",
+            "otherEntityName": "clinicOwnerInfo",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "clinicDetails"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "governtment",
+            "otherEntityName": "governtment",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "clinicDetails"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "nonGoverntment",
+            "otherEntityName": "nonGoverntment",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "clinicDetails"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "medicineSystem",
+            "otherEntityName": "medicineSystem",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "clinicDetails"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pincode",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "country",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mobile",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "clinicTiming",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "category",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "landmarks",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "website",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "clinicDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "clinicImages",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "location",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170724071733",
+    "entityTableName": "clinic_details",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

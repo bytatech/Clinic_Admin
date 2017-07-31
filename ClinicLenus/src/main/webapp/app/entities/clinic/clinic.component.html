@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="clinicLenusApp.clinic.home.title">Clinics</span>
+        <button class="btn btn-primary float-right create-clinic" [routerLink]="['/', { outlets: { popup: ['clinic-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="clinicLenusApp.clinic.home.createLabel">
+            Create new Clinic
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="clinics">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="clinicLenusApp.clinic.clinicDetails">Clinic Details</span></th>
+            <th><span jhiTranslate="clinicLenusApp.clinic.receptionist">Receptionist</span></th>
+            <th><span jhiTranslate="clinicLenusApp.clinic.doctor">Doctor</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let clinic of clinics ;trackBy: trackId">
+                <td><a [routerLink]="['../clinic', clinic.id ]">{{clinic.id}}</a></td>
+                <td>
+                    <div *ngIf="clinic.clinicDetails">
+                        <a [routerLink]="['../clinic-details', clinic.clinicDetails?.id ]" >{{clinic.clinicDetails?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="clinic.receptionist">
+                        <a [routerLink]="['../receptionist', clinic.receptionist?.id ]" >{{clinic.receptionist?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="clinic.doctor">
+                        <a [routerLink]="['../doctor', clinic.doctor?.id ]" >{{clinic.doctor?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../clinic', clinic.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'clinic/'+ clinic.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'clinic/'+ clinic.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

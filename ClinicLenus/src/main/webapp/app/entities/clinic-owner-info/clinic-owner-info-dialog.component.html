@@ -1,0 +1,55 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myClinicOwnerInfoLabel" jhiTranslate="clinicLenusApp.clinicOwnerInfo.home.createOrEditLabel">Create or edit a Clinic Owner Info</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!clinicOwnerInfo.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="clinicOwnerInfo.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicOwnerInfo.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="clinicOwnerInfo.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicOwnerInfo.designation" for="field_designation">Designation</label>
+            <input type="text" class="form-control" name="designation" id="field_designation"
+                [(ngModel)]="clinicOwnerInfo.designation"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicOwnerInfo.mobile" for="field_mobile">Mobile</label>
+            <input type="number" class="form-control" name="mobile" id="field_mobile"
+                [(ngModel)]="clinicOwnerInfo.mobile"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicOwnerInfo.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="clinicOwnerInfo.email"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicOwnerInfo.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                [(ngModel)]="clinicOwnerInfo.address"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicOwnerInfo.registrationNo" for="field_registrationNo">Registration No</label>
+            <input type="number" class="form-control" name="registrationNo" id="field_registrationNo"
+                [(ngModel)]="clinicOwnerInfo.registrationNo"  />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

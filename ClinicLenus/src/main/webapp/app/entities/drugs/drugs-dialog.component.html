@@ -1,0 +1,51 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myDrugsLabel" jhiTranslate="clinicLenusApp.drugs.home.createOrEditLabel">Create or edit a Drugs</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!drugs.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="drugs.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.drugs.drugName" for="field_drugName">Drug Name</label>
+            <input type="text" class="form-control" name="drugName" id="field_drugName"
+                [(ngModel)]="drugs.drugName" required />
+            <div [hidden]="!(editForm.controls.drugName?.dirty && editForm.controls.drugName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.drugName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.drugs.drugInstruction" for="field_drugInstruction">Drug Instruction</label>
+            <input type="text" class="form-control" name="drugInstruction" id="field_drugInstruction"
+                [(ngModel)]="drugs.drugInstruction"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.drugs.frequency" for="field_frequency">Frequency</label>
+            <input type="number" class="form-control" name="frequency" id="field_frequency"
+                [(ngModel)]="drugs.frequency"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.drugs.totalPacking" for="field_totalPacking">Total Packing</label>
+            <input type="number" class="form-control" name="totalPacking" id="field_totalPacking"
+                [(ngModel)]="drugs.totalPacking"  />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

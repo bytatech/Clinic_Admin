@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "clinicDetails",
+            "otherEntityName": "clinicDetails",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "clinic"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "receptionist",
+            "otherEntityName": "receptionist",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "clinic"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "doctor",
+            "otherEntityName": "doctor",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "clinic"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "clinicPatientData",
+            "otherEntityName": "clinicPatientData",
+            "otherEntityRelationshipName": "clinic"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20170724071726",
+    "entityTableName": "clinic",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

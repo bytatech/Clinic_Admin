@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "drug",
+            "otherEntityName": "prescription",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "drugs"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "drugName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "drugInstruction",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "frequency",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "totalPacking",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170724071731",
+    "entityTableName": "drugs",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

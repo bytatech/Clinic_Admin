@@ -1,0 +1,45 @@
+
+<div *ngIf="clinicOwnerInfo">
+    <h2><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.detail.title">Clinic Owner Info</span> {{clinicOwnerInfo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.name">Name</span></dt>
+        <dd>
+            <span>{{clinicOwnerInfo.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.designation">Designation</span></dt>
+        <dd>
+            <span>{{clinicOwnerInfo.designation}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.mobile">Mobile</span></dt>
+        <dd>
+            <span>{{clinicOwnerInfo.mobile}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.email">Email</span></dt>
+        <dd>
+            <span>{{clinicOwnerInfo.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.address">Address</span></dt>
+        <dd>
+            <span>{{clinicOwnerInfo.address}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.clinicOwnerInfo.registrationNo">Registration No</span></dt>
+        <dd>
+            <span>{{clinicOwnerInfo.registrationNo}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'clinic-owner-info/'+ clinicOwnerInfo.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

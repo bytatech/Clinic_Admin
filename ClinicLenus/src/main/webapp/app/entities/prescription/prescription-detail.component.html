@@ -1,0 +1,41 @@
+
+<div *ngIf="prescription">
+    <h2><span jhiTranslate="clinicLenusApp.prescription.detail.title">Prescription</span> {{prescription.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="clinicLenusApp.prescription.date">Date</span></dt>
+        <dd>
+            <span>{{prescription.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.prescription.doctorName">Doctor Name</span></dt>
+        <dd>
+            <span>{{prescription.doctorName}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.prescription.clinicPatientData">Clinic Patient Data</span></dt>
+        <dd>
+            <div *ngIf="prescription.clinicPatientData">
+                <a [routerLink]="['/clinic-patient-data', prescription.clinicPatientData?.id]">{{prescription.clinicPatientData?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.prescription.drugs">Drugs</span></dt>
+        <dd>
+            <span *ngFor="let drugs of prescription.drugs; let last = last">
+                <a [routerLink]="['/drugs', drugs?.id ]">{{drugs.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'prescription/'+ prescription.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

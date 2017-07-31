@@ -1,0 +1,105 @@
+
+
+entity Clinic{
+	id Long
+}
+entity Doctor{
+	name String,
+    department String
+}
+entity Receptionist{
+	name String
+}
+entity ClinicPatientData {
+	id Long,
+    date LocalDate,
+    name String required,
+    gender String,
+    age Integer,
+    phoneNo Long
+}
+
+entity Prescription {
+	id Long,
+    date LocalDate,
+    doctorName String required
+}
+entity Drugs{
+	id Long,
+    drugName String required,
+    drugInstruction String,
+    frequency Integer,
+    totalPacking Integer
+}
+
+
+entity ClinicPatientPrivateData{
+	patientId Integer,
+    address String,
+    city String,
+    zip Long,
+    email String,
+    country String,
+    socialMediaId String,
+    profession String
+    
+    
+}
+
+entity ClinicDetails{
+	name String,
+    address String,
+    pincode Long,
+    country String,
+    mobile Long,
+    clinicTiming LocalDate,
+    category String,
+    landmarks String,
+    website String,
+    clinicDescription String,
+    clinicImages ImageBlob,
+    location String
+}
+
+entity ClinicOwnerInfo{
+	name String,
+    designation String,
+    mobile Long,
+    email String,
+    address String,
+    registrationNo Long
+}
+entity Governtment{
+	name String
+}
+entity NonGoverntment{
+	name String
+}
+entity MedicineSystem{
+	name String
+}
+
+relationship OneToMany{
+	Clinic{clinicPatientData} to ClinicPatientData,
+	ClinicPatientData{prescription} to Prescription
+}
+relationship OneToOne{
+	Clinic{clinicDetails} to ClinicDetails,
+    Clinic{receptionist} to Receptionist,
+    Clinic{doctor} to Doctor,
+	ClinicPatientData{clinicPrivateData} to ClinicPatientPrivateData,
+    ClinicDetails{clinicOwnerInfo} to ClinicOwnerInfo,
+    ClinicDetails{governtment} to Governtment,
+    ClinicDetails{nonGoverntment} to NonGoverntment,
+    ClinicDetails{medicineSystem} to MedicineSystem
+}
+
+relationship ManyToMany{
+
+Prescription{drugs(id)} to Drugs{drug}
+}
+
+
+
+service all with serviceImpl
+

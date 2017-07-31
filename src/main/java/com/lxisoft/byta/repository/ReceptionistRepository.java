@@ -24,7 +24,7 @@ import com.lxisoft.byta.model.Token;
 @Repository
 public interface ReceptionistRepository extends JpaRepository<ClinicPatientData, Long> {
 
-	@PreAuthorize("hasAnyRole('PATIENT','RECEPTIONIST','DOCTOR')")
+	@PreAuthorize("hasRole('ROLE_RECEPTIONIST')")
 	<S extends ClinicPatientData> S save(S s);
 
 	@PreAuthorize("hasRole('ROLE_RECEPTIONIST')")

@@ -1,0 +1,37 @@
+
+<div *ngIf="drugs">
+    <h2><span jhiTranslate="clinicLenusApp.drugs.detail.title">Drugs</span> {{drugs.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="clinicLenusApp.drugs.drugName">Drug Name</span></dt>
+        <dd>
+            <span>{{drugs.drugName}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.drugs.drugInstruction">Drug Instruction</span></dt>
+        <dd>
+            <span>{{drugs.drugInstruction}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.drugs.frequency">Frequency</span></dt>
+        <dd>
+            <span>{{drugs.frequency}}</span>
+        </dd>
+        <dt><span jhiTranslate="clinicLenusApp.drugs.totalPacking">Total Packing</span></dt>
+        <dd>
+            <span>{{drugs.totalPacking}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'drugs/'+ drugs.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

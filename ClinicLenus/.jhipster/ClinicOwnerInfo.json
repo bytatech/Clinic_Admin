@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "designation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mobile",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "registrationNo",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20170724071734",
+    "entityTableName": "clinic_owner_info",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

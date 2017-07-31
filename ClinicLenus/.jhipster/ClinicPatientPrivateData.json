@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "patientId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "zip",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "country",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "socialMediaId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "profession",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170724071732",
+    "entityTableName": "clinic_patient_private_data",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

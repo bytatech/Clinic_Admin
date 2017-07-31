@@ -1,0 +1,130 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myClinicDetailsLabel" jhiTranslate="clinicLenusApp.clinicDetails.home.createOrEditLabel">Create or edit a Clinic Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!clinicDetails.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="clinicDetails.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="clinicDetails.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                [(ngModel)]="clinicDetails.address"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.pincode" for="field_pincode">Pincode</label>
+            <input type="number" class="form-control" name="pincode" id="field_pincode"
+                [(ngModel)]="clinicDetails.pincode"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.country" for="field_country">Country</label>
+            <input type="text" class="form-control" name="country" id="field_country"
+                [(ngModel)]="clinicDetails.country"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.mobile" for="field_mobile">Mobile</label>
+            <input type="number" class="form-control" name="mobile" id="field_mobile"
+                [(ngModel)]="clinicDetails.mobile"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.clinicTiming" for="field_clinicTiming">Clinic Timing</label>
+            <div class="input-group">
+                <input id="field_clinicTiming" type="text" class="form-control" name="clinicTiming" ngbDatepicker  #clinicTimingDp="ngbDatepicker" [(ngModel)]="clinicDetails.clinicTiming"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="clinicTimingDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.category" for="field_category">Category</label>
+            <input type="text" class="form-control" name="category" id="field_category"
+                [(ngModel)]="clinicDetails.category"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.landmarks" for="field_landmarks">Landmarks</label>
+            <input type="text" class="form-control" name="landmarks" id="field_landmarks"
+                [(ngModel)]="clinicDetails.landmarks"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.website" for="field_website">Website</label>
+            <input type="text" class="form-control" name="website" id="field_website"
+                [(ngModel)]="clinicDetails.website"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.clinicDescription" for="field_clinicDescription">Clinic Description</label>
+            <input type="text" class="form-control" name="clinicDescription" id="field_clinicDescription"
+                [(ngModel)]="clinicDetails.clinicDescription"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.clinicImages" for="field_clinicImages">Clinic Images</label>
+            <div>
+                <img [src]="'data:' + clinicDetails.clinicImagesContentType + ';base64,' + clinicDetails.clinicImages" style="max-height: 100px;" *ngIf="clinicDetails.clinicImages" alt="clinicDetails image"/>
+                <div *ngIf="clinicDetails.clinicImages" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{clinicDetails.clinicImagesContentType}}, {{byteSize(clinicDetails.clinicImages)}}</span>
+                    <button type="button" (click)="clearInputImage('clinicImages', 'clinicImagesContentType', 'fileImage')" class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="fileImage" (change)="setFileData($event, clinicDetails, 'clinicImages', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="clinicImages" id="field_clinicImages"
+                [(ngModel)]="clinicDetails.clinicImages"  />
+            <input type="hidden" class="form-control" name="clinicImagesContentType" id="field_clinicImagesContentType"
+                [(ngModel)]="clinicDetails.clinicImagesContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="clinicLenusApp.clinicDetails.location" for="field_location">Location</label>
+            <input type="text" class="form-control" name="location" id="field_location"
+                [(ngModel)]="clinicDetails.location"  />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="clinicLenusApp.clinicDetails.clinicOwnerInfo" for="field_clinicOwnerInfo">Clinic Owner Info</label>
+            <select class="form-control" id="field_clinicOwnerInfo" name="clinicOwnerInfo" [(ngModel)]="clinicDetails.clinicOwnerInfo">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="clinicOwnerInfoOption.id === clinicDetails.clinicOwnerInfo?.id ? clinicDetails.clinicOwnerInfo : clinicOwnerInfoOption" *ngFor="let clinicOwnerInfoOption of clinicownerinfos; trackBy: trackClinicOwnerInfoById">{{clinicOwnerInfoOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="clinicLenusApp.clinicDetails.governtment" for="field_governtment">Governtment</label>
+            <select class="form-control" id="field_governtment" name="governtment" [(ngModel)]="clinicDetails.governtment">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="governtmentOption.id === clinicDetails.governtment?.id ? clinicDetails.governtment : governtmentOption" *ngFor="let governtmentOption of governtments; trackBy: trackGoverntmentById">{{governtmentOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="clinicLenusApp.clinicDetails.nonGoverntment" for="field_nonGoverntment">Non Governtment</label>
+            <select class="form-control" id="field_nonGoverntment" name="nonGoverntment" [(ngModel)]="clinicDetails.nonGoverntment">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="nonGoverntmentOption.id === clinicDetails.nonGoverntment?.id ? clinicDetails.nonGoverntment : nonGoverntmentOption" *ngFor="let nonGoverntmentOption of nongoverntments; trackBy: trackNonGoverntmentById">{{nonGoverntmentOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="clinicLenusApp.clinicDetails.medicineSystem" for="field_medicineSystem">Medicine System</label>
+            <select class="form-control" id="field_medicineSystem" name="medicineSystem" [(ngModel)]="clinicDetails.medicineSystem">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="medicineSystemOption.id === clinicDetails.medicineSystem?.id ? clinicDetails.medicineSystem : medicineSystemOption" *ngFor="let medicineSystemOption of medicinesystems; trackBy: trackMedicineSystemById">{{medicineSystemOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+{
+    "clinicLenusApp": {
+        "clinicOwnerInfo" : {
+            "home": {
+                "title": "Clinic Owner Infos",
+                "createLabel": "Create a new Clinic Owner Info",
+                "createOrEditLabel": "Create or edit a Clinic Owner Info"
+            },
+            "created": "A new Clinic Owner Info is created with identifier {{ param }}",
+            "updated": "A Clinic Owner Info is updated with identifier {{ param }}",
+            "deleted": "A Clinic Owner Info is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Clinic Owner Info {{ id }}?"
+            },
+            "detail": {
+                "title": "Clinic Owner Info"
+            },
+            "name": "Name",
+            "designation": "Designation",
+            "mobile": "Mobile",
+            "email": "Email",
+            "address": "Address",
+            "registrationNo": "Registration No"
+        }
+    }
+}

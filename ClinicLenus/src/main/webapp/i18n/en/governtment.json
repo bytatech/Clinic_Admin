@@ -1,0 +1,21 @@
+{
+    "clinicLenusApp": {
+        "governtment" : {
+            "home": {
+                "title": "Governtments",
+                "createLabel": "Create a new Governtment",
+                "createOrEditLabel": "Create or edit a Governtment"
+            },
+            "created": "A new Governtment is created with identifier {{ param }}",
+            "updated": "A Governtment is updated with identifier {{ param }}",
+            "deleted": "A Governtment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Governtment {{ id }}?"
+            },
+            "detail": {
+                "title": "Governtment"
+            },
+            "name": "Name"
+        }
+    }
+}

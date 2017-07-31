@@ -1,0 +1,21 @@
+{
+    "clinicLenusApp": {
+        "medicineSystem" : {
+            "home": {
+                "title": "Medicine Systems",
+                "createLabel": "Create a new Medicine System",
+                "createOrEditLabel": "Create or edit a Medicine System"
+            },
+            "created": "A new Medicine System is created with identifier {{ param }}",
+            "updated": "A Medicine System is updated with identifier {{ param }}",
+            "deleted": "A Medicine System is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Medicine System {{ id }}?"
+            },
+            "detail": {
+                "title": "Medicine System"
+            },
+            "name": "Name"
+        }
+    }
+}

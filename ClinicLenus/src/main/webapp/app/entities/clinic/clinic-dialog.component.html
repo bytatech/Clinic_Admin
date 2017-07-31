@@ -1,0 +1,46 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myClinicLabel" jhiTranslate="clinicLenusApp.clinic.home.createOrEditLabel">Create or edit a Clinic</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!clinic.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="clinic.id" readonly />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="clinicLenusApp.clinic.clinicDetails" for="field_clinicDetails">Clinic Details</label>
+            <select class="form-control" id="field_clinicDetails" name="clinicDetails" [(ngModel)]="clinic.clinicDetails">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="clinicDetailsOption.id === clinic.clinicDetails?.id ? clinic.clinicDetails : clinicDetailsOption" *ngFor="let clinicDetailsOption of clinicdetails; trackBy: trackClinicDetailsById">{{clinicDetailsOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="clinicLenusApp.clinic.receptionist" for="field_receptionist">Receptionist</label>
+            <select class="form-control" id="field_receptionist" name="receptionist" [(ngModel)]="clinic.receptionist">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="receptionistOption.id === clinic.receptionist?.id ? clinic.receptionist : receptionistOption" *ngFor="let receptionistOption of receptionists; trackBy: trackReceptionistById">{{receptionistOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="clinicLenusApp.clinic.doctor" for="field_doctor">Doctor</label>
+            <select class="form-control" id="field_doctor" name="doctor" [(ngModel)]="clinic.doctor">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="doctorOption.id === clinic.doctor?.id ? clinic.doctor : doctorOption" *ngFor="let doctorOption of doctors; trackBy: trackDoctorById">{{doctorOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
